@@ -76,9 +76,9 @@ module Snake_control(
 
     parameter BLACK = 12'h000;
     parameter WHITE = 12'hfff;
-    parameter RED = 12'hf00;
+    parameter BLUE = 12'hf00;
     parameter GREEN = 12'h0f0;
-    parameter BLUE = 12'h00f;
+    parameter RED = 12'h00f;
 
     parameter SNAKE_COLOR = BLUE;
     parameter BACKGROUND_COLOR = GREEN;
