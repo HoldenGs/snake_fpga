@@ -74,14 +74,14 @@ module Snake_control(
     reg [7:0] SnakeState_X [0:SnakeLength-1];
     reg [6:0] SnakeState_Y [0:SnakeLength-1];
 
-    param BLACK = 12'h000;
-    param WHITE = 12'hfff;
-    param RED = 12'hf00;
-    param GREEN = 12'h0f0;
-    param BLUE = 12'h00f;
+    parameter BLACK = 12'h000;
+    parameter WHITE = 12'hfff;
+    parameter RED = 12'hf00;
+    parameter GREEN = 12'h0f0;
+    parameter BLUE = 12'h00f;
 
-    param SNAKE_COLOR = BLUE;
-    param BACKGROUND_COLOR = GREEN;
+    parameter SNAKE_COLOR = BLUE;
+    parameter BACKGROUND_COLOR = GREEN;
     
     //Create snake pixels
     genvar PixNo;
