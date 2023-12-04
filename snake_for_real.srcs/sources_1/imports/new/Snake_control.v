@@ -68,7 +68,7 @@ module Snake_control(
     assign COLOR_OUT = color;
     //assign state_navigation = direction;
     parameter MaxY = 120;
-    parameter MaxX = 160;    
+    parameter MaxX = 160;
     parameter SnakeLength = 40;
     
     reg [7:0] SnakeState_X [0:SnakeLength-1];
@@ -146,7 +146,7 @@ module Snake_control(
     always@(posedge CLK) begin
         if (state_master == 2'd1) begin //PLAY
             if (target_horizontal_addr[7:0] == horizontal_addr[9:2] && target_vertical_addr[6:0] == vertical_addr[8:2]) //Seed address
-                color <= 12'h00f;
+                color <= RED;
 			else if (SnakeState_X[0] == horizontal_addr[9:2] && SnakeState_Y[0] == vertical_addr[8:2]) begin
                 if (score >= 4'd0) begin
                     color <= SNAKE_COLOR;
