@@ -44,26 +44,26 @@ module Master_Game(
     wire fail;
     
     Master_State_Machine msm(
-                                    .CLK(CLK),
-                                    .BTNU(BTNU),
-                                    .BTND(BTND),
-                                    .BTNL(BTNL),
-                                    .BTNR(BTNR),
-                                    .BTNC(BTNC),
-                                    .SCORE(score),
-                                    .fail(fail),
-                                    .STATE(state_master)
-                                );
+                        .CLK(CLK),
+                        .BTNU(BTNU),
+                        .BTND(BTND),
+                        .BTNL(BTNL),
+                        .BTNR(BTNR),
+                        .BTNC(BTNC),
+                        .SCORE(score),
+                        .fail(fail),
+                        .STATE(state_master)
+                    );
     
     Navigation_State_Machine nsm(
-                                        .CLK(CLK),
-                                        .BTNU(BTNU),
-                                        .BTND(BTND),
-                                        .BTNL(BTNL),
-                                        .BTNR(BTNR),
-                                        .BTNC(BTNC),
-                                        .STATE(state_navigation)
-                                    );
+                        .CLK(CLK),
+                        .BTNU(BTNU),
+                        .BTND(BTND),
+                        .BTNL(BTNL),
+                        .BTNR(BTNR),
+                        .BTNC(BTNC),
+                        .STATE(state_navigation)
+                    );
     
     Snake_control s(
                         .CLK(CLK),
@@ -79,29 +79,29 @@ module Master_Game(
                     );
     
     Target_Generator tg(
-                            .CLK(CLK),
-                            .RESET(BTNC),
-                            .reached_target(reached_target),
-                            .rand_target_address(target_address)
-                        );
+                        .CLK(CLK),
+                        .RESET(BTNC),
+                        .reached_target(reached_target),
+                        .rand_target_address(target_address)
+                    );
     
     VGA_Interface vgai(
-                            .CLK(CLK),
-                            .COLOR_IN(color),
-                            .COLOR_OUT(RGB),
-                            .ADDR(address),
-                            .HS(HS),
-                            .VS(VS)
-                        );
+                        .CLK(CLK),
+                        .COLOR_IN(color),
+                        .COLOR_OUT(RGB),
+                        .ADDR(address),
+                        .HS(HS),
+                        .VS(VS)
+                    );
     
     Score_Counter sc(
-                            .CLK(CLK),
-                            .RESET(BTNC),
-                            .reached_target(reached_target),
-                            .master_state(state_master),
-                            .STROBE(strobe),
-                            .SCORE(score)
-                        );
+                        .CLK(CLK),
+                        .RESET(BTNC),
+                        .reached_target(reached_target),
+                        .master_state(state_master),
+                        .STROBE(strobe),
+                        .SCORE(score)
+                    );
     
     wire [4:0] DecCountAndDOT0;
     wire [4:0] DecCountAndDOT1;
@@ -116,21 +116,21 @@ module Master_Game(
     assign DecCountAndDOT3 = {5'b0};
     
     Multiplexer_4way Mux4(
-                            .CONTROL({1'b0, strobe}),
-                            .IN0(DecCountAndDOT0),
-                            .IN1(DecCountAndDOT1),
-                            .IN2(DecCountAndDOT2),
-                            .IN3(DecCountAndDOT3),
-                            .OUT(MuxOut)
-                         );
+                        .CONTROL({1'b0, strobe}),
+                        .IN0(DecCountAndDOT0),
+                        .IN1(DecCountAndDOT1),
+                        .IN2(DecCountAndDOT2),
+                        .IN3(DecCountAndDOT3),
+                        .OUT(MuxOut)
+                        );
     
     
     Segment_Display_Interface sdi(
-                                        .SEG_SELECT_IN({1'b0, strobe}),
-                                        .BIN_IN(MuxOut[3:0]),
-                                        .DOT_IN(1'b0),
-                                        .SEG_SELECT_OUT(SEG_SELECT),
-                                        .HEX_OUT(HEX_OUT)
-                                    );
+                        .SEG_SELECT_IN({1'b0, strobe}),
+                        .BIN_IN(MuxOut[3:0]),
+                        .DOT_IN(1'b0),
+                        .SEG_SELECT_OUT(SEG_SELECT),
+                        .HEX_OUT(HEX_OUT)
+                    );
     
 endmodule

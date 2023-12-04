@@ -30,13 +30,13 @@ module VGA_Interface(
     output VS
     );
     
-    //Declaration of bus to allocate space in memory for colour, horizontal address and vertial address
+    //Declaration of bus to allocate space in memory for color, horizontal address and vertial address
     wire [9:0] addrh;
     wire [8:0] addrv;
     
     assign ADDR = {addrh[9:0], addrv[8:0]};
     
-    //VGA Controller to select pixel colour on the screen according to the position
+    //VGA Controller to select pixel color on the screen according to the position
     VGA_Driver #() vga(
                         .CLK(CLK),
                         .COLOR_IN(COLOR_IN),

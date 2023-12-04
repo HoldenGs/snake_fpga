@@ -38,7 +38,7 @@ module VGA_Driver(
     assign HS = hsync;
     assign VS = vsync;
     
-    parameter VertTimeToPulseWeidthEnd = 10'd2;
+    parameter VertTimeToPulseWidthEnd = 10'd2;
     parameter VertTimeToBackPorchEnd = 10'd31;
     parameter VertTimeToDisplayTimeEnd = 10'd511;
     parameter VertTimeToFrontPorchEnd = 10'd521;
@@ -52,9 +52,6 @@ module VGA_Driver(
     wire [9:0] CounterTo520Trigger;
     wire CounterTo4Trigger;
     wire TrigSecondCounter;
-    
-//    wire [11:0] COLOUR_IN;
-//    assign COLOUR_IN = 12'b101111001001;
     
     Generic_counter # (
                     .COUNTER_WIDTH(2),
@@ -100,7 +97,7 @@ module VGA_Driver(
     
     //If counterTo520 less then 2, VS = 0 else VS=1
     always@(posedge CLK) begin
-        if (CounterTo520Trigger < VertTimeToPulseWeidthEnd)
+        if (CounterTo520Trigger < VertTimeToPulseWidthEnd)
             vsync <= 1'b0;
         else
             vsync <= 1'b1;

@@ -31,7 +31,7 @@ module VGA_Int_TB(
     wire HS;
     wire VS;
     
-    VGA_Interface vgi   (
+    VGA_Interface vgi(
                             .CLK(CLK),
                             .COLOUR_IN(COLOUR_IN),                            
                             .COLOUR_OUT(COLOUR_OUT),
