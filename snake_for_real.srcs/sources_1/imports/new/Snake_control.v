@@ -82,6 +82,10 @@ module Snake_control(
 
     parameter SNAKE_COLOR = BLUE;
     parameter BACKGROUND_COLOR = GREEN;
+
+    parameter IDLE = 2'd0;
+    parameter PLAY = 2'd1;
+    parameter WIN = 2'd2;
     
     //Create snake pixels
     genvar PixNo;
@@ -144,7 +148,7 @@ module Snake_control(
     end
     
     always@(posedge CLK) begin
-        if (state_master == 2'd1) begin //PLAY
+        if (state_master == PLAY) begin //PLAY
             if (target_horizontal_addr[7:0] == horizontal_addr[9:2] && target_vertical_addr[6:0] == vertical_addr[8:2]) //Seed address
                 color <= RED;
 			else if (SnakeState_X[0] == horizontal_addr[9:2] && SnakeState_Y[0] == vertical_addr[8:2]) begin
@@ -464,9 +468,13 @@ module Snake_control(
             else //Background
                 color <= BACKGROUND_COLOR;
         end
-        else if (state_master == 2'd0) //IDLE
+        else if (state_master == IDLE) //IDLE
+            // Write out PRESS ANY BUTTON
+
             color <= 12'hf00;
-        else if (state_master == 2'd2) //WIN
+        else if (state_master == WIN) //WIN
+            // Write out WIN
+            
             color <= 12'hf0f;
         else //OTHER
             color <= SNAKE_COLOR;

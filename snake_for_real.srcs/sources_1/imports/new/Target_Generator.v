@@ -30,13 +30,10 @@ module Target_Generator(
     reg [7:0] horizontal_shift_reg;
     reg [6:0] vertical_shift_reg;
     
-//    reg [7:0] next_horizontal_shift_reg;
-//    reg [6:0] next_vertical_shift_reg;
-    
     wire eight_first_xnor;
     wire eight_second_xnor;
     wire eight_third_xnor;
-    wire seven_xnor;    
+    wire seven_xnor;
     
     assign rand_target_address = {horizontal_shift_reg, vertical_shift_reg};   
     

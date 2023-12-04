@@ -42,14 +42,50 @@ module Master_Game(
     wire [11:0] color;
     wire strobe;
     wire fail;
+    wire reached_target;
+    wire BTNU_D;
+    wire BTND_D;
+    wire BTNL_D;
+    wire BTNR_D;
+    wire BTNC_D;
+
+    debounce du(
+                        .CLK(CLK),
+                        .BTN_IN(BTNU),
+                        .BTN_OUT(BTNU_D)
+    );
+
+    debounce dd(
+                        .CLK(CLK),
+                        .BTN_IN(BTND),
+                        .BTN_OUT(BTND_D)
+    );
+
+    debounce dl(
+                        .CLK(CLK),
+                        .BTN_IN(BTNL),
+                        .BTN_OUT(BTNL_D)
+    );
+
+    debounce dr(
+                        .CLK(CLK),
+                        .BTN_IN(BTNR),
+                        .BTN_OUT(BTNR_D)
+    );
+
+    debounce dc(
+                        .CLK(CLK),
+                        .BTN_IN(BTNC),
+                        .BTN_OUT(BTNC_D)
+    );
     
     Master_State_Machine msm(
                         .CLK(CLK),
-                        .BTNU(BTNU),
-                        .BTND(BTND),
-                        .BTNL(BTNL),
-                        .BTNR(BTNR),
-                        .BTNC(BTNC),
+                        .BTNU(BTNU_D),
+                        .BTND(BTND_D),
+                        .BTNL(BTNL_D),
+                        .BTNR(BTNR_D),
+                        .BTNC(BTNC_D),
                         .SCORE(score),
                         .fail(fail),
                         .STATE(state_master)
@@ -57,17 +93,17 @@ module Master_Game(
     
     Navigation_State_Machine nsm(
                         .CLK(CLK),
-                        .BTNU(BTNU),
-                        .BTND(BTND),
-                        .BTNL(BTNL),
-                        .BTNR(BTNR),
-                        .BTNC(BTNC),
+                        .BTNU(BTNU_D),
+                        .BTND(BTND_D),
+                        .BTNL(BTNL_D),
+                        .BTNR(BTNR_D),
+                        .BTNC(BTNC_D),
                         .STATE(state_navigation)
                     );
     
     Snake_control s(
                         .CLK(CLK),
-                        .RESET(BTNC),
+                        .RESET(BTNC_D),
                         .score(score),
                         .state_master(state_master),
                         .state_navigation(state_navigation),
@@ -80,7 +116,7 @@ module Master_Game(
     
     Target_Generator tg(
                         .CLK(CLK),
-                        .RESET(BTNC),
+                        .RESET(BTNC_D),
                         .reached_target(reached_target),
                         .rand_target_address(target_address)
                     );
@@ -96,7 +132,7 @@ module Master_Game(
     
     Score_Counter sc(
                         .CLK(CLK),
-                        .RESET(BTNC),
+                        .RESET(BTNC_D),
                         .reached_target(reached_target),
                         .master_state(state_master),
                         .STROBE(strobe),
