@@ -42,7 +42,7 @@ module Target_Generator(
     assign eight_third_xnor = ((~horizontal_shift_reg[3])&&(~eight_second_xnor)) || ((horizontal_shift_reg[3])&&(eight_second_xnor));
     assign seven_xnor = ((~vertical_shift_reg[5])&&(~vertical_shift_reg[6])) || ((vertical_shift_reg[5])&&(vertical_shift_reg[6]));
     
-    always@(posedge CLK) begin
+    always @(posedge CLK) begin
 //        if (RESET) begin
 //            horizontal_shift_reg <= 8'b01100010;
 //            vertical_shift_reg <= 7'b0101100;

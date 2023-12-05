@@ -52,7 +52,6 @@ module Snake_control(
     assign reached_target = reached;
     
     reg [11:0] color;
-    //reg [1:0] direction;
     
     wire [6:0] target_vertical_addr;
     wire [7:0] target_horizontal_addr;
@@ -66,7 +65,6 @@ module Snake_control(
     assign horizontal_addr = pixel_address[18:9]; //10 bit
     
     assign COLOR_OUT = color;
-    //assign state_navigation = direction;
     parameter MaxY = 120;
     parameter MaxX = 160;
     parameter SnakeLength = 40;
@@ -79,6 +77,7 @@ module Snake_control(
     parameter BLUE = 12'hf00;
     parameter GREEN = 12'h0f0;
     parameter RED = 12'h00f;
+    parameter YELLOW = 12'hff0;
 
     parameter SNAKE_COLOR = BLUE;
     parameter BACKGROUND_COLOR = GREEN;
@@ -471,17 +470,13 @@ module Snake_control(
         else if (state_master == IDLE) //IDLE
             // Write out PRESS ANY BUTTON
 
-            color <= 12'hfff;
+            color <= WHITE;
         else if (state_master == WIN) //WIN
             // Write out WIN
             
-            color <= 12'hf0f;
+            color <= YELLOW;
         else //OTHER
             color <= SNAKE_COLOR;
     end
-    
-//    always@(posedge CLK) begin
-//        crashed <= 1'b0;
-//    end
     
 endmodule

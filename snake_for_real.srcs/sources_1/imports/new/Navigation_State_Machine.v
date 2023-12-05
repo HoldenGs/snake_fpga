@@ -35,7 +35,7 @@ module Navigation_State_Machine(
     assign STATE = state_snake;
 
         
-    always@(BTNL or BTNR or BTNU or BTND) begin
+    always @(BTNL or BTNR or BTNU or BTND) begin
         case(state_snake)
             2'd0: begin
                 if (BTNU)
