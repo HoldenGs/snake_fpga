@@ -45,11 +45,11 @@ module Target_Generator(
     // Linear Feedback Shift Register (LFSR) Logic
     always @(posedge CLK or posedge RESET) begin
         if (reached_target || RESET) begin
-            lfsr_h <= 8'b00000001; // Non-zero initial value
-            lfsr_v <= 7'b0000001;  // Non-zero initial value
-        end else begin
             lfsr_h <= {lfsr_h[6:0], lfsr_h[7] ^ lfsr_h[5]}; // Polynomial: x^8 + x^6 + 1
             lfsr_v <= {lfsr_v[5:0], lfsr_v[6] ^ lfsr_v[5]}; // Polynomial: x^7 + x^6 + 1
+        end else begin
+            lfsr_h <= 1'd50;
+            lfsr_v <= 1'd50;
         end
     end
 
