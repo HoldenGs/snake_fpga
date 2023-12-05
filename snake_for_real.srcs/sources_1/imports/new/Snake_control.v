@@ -471,7 +471,7 @@ module Snake_control(
         else if (state_master == IDLE) //IDLE
             // Write out PRESS ANY BUTTON
 
-            color <= 12'hf00;
+            color <= 12'hfff;
         else if (state_master == WIN) //WIN
             // Write out WIN
             
