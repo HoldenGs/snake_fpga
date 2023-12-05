@@ -30,43 +30,33 @@ module Target_Generator(
     reg [7:0] horizontal_shift_reg;
     reg [6:0] vertical_shift_reg;
     
-    wire eight_first_xnor;
-    wire eight_second_xnor;
-    wire eight_third_xnor;
-    wire seven_xnor;
-    
     assign rand_target_address = {horizontal_shift_reg, vertical_shift_reg};   
-    
-    assign eight_first_xnor = ((~horizontal_shift_reg[5])&&(~horizontal_shift_reg[7])) || ((horizontal_shift_reg[5])&&(horizontal_shift_reg[7]));
-    assign eight_second_xnor = ((~horizontal_shift_reg[4])&&(~eight_first_xnor)) || ((horizontal_shift_reg[4])&&(eight_first_xnor));
-    assign eight_third_xnor = ((~horizontal_shift_reg[3])&&(~eight_second_xnor)) || ((horizontal_shift_reg[3])&&(eight_second_xnor));
-    assign seven_xnor = ((~vertical_shift_reg[5])&&(~vertical_shift_reg[6])) || ((vertical_shift_reg[5])&&(vertical_shift_reg[6]));
-    
-    always @(posedge CLK) begin
-//        if (RESET) begin
-//            horizontal_shift_reg <= 8'b01100010;
-//            vertical_shift_reg <= 7'b0101100;
-//        end
-//        else begin
-            if (reached_target || RESET) begin
-                if ({horizontal_shift_reg[6:0], eight_third_xnor} <= 160 && {vertical_shift_reg[5:0], seven_xnor} <= 120) begin
-                    horizontal_shift_reg <= {horizontal_shift_reg[6:0], eight_third_xnor};
-                    vertical_shift_reg <= {vertical_shift_reg[5:0], seven_xnor};
-                end
-                else begin
-                    horizontal_shift_reg <= {8'd80};
-                    vertical_shift_reg <= {7'd60};
-                end
-//                if ({vertical_shift_reg[5:0], seven_xnor} <= 120 && {vertical_shift_reg[5:0], seven_xnor} >= 10)
-//                    vertical_shift_reg <= {vertical_shift_reg[5:0], seven_xnor};
-//                else
-//                    vertical_shift_reg <= {7'd60};
-            end  
-//            else begin
-//                horizontal_shift_reg <= horizontal_shift_reg;
-//                vertical_shift_reg <= vertical_shift_reg;
-//            end
-//        end
+
+    // 8-bit LFSR for horizontal_shift_reg (range 12 to 145)
+    reg [7:0] lfsr_h;
+    wire [7:0] random_num_h;
+    assign random_num_h = (lfsr_h % 134) + 12; // Scaling and offsetting
+
+    // 7-bit LFSR for vertical_shift_reg (range 15 to 105)
+    reg [6:0] lfsr_v;
+    wire [6:0] random_num_v;
+    assign random_num_v = (lfsr_v % 91) + 15; // Scaling and offsetting
+
+    // Linear Feedback Shift Register (LFSR) Logic
+    always @(posedge clk or posedge RESET) begin
+        if (reached_target || RESET) begin
+            lfsr_h <= 8'b00000001; // Non-zero initial value
+            lfsr_v <= 7'b0000001;  // Non-zero initial value
+        end else begin
+            lfsr_h <= {lfsr_h[6:0], lfsr_h[7] ^ lfsr_h[5]}; // Polynomial: x^8 + x^6 + 1
+            lfsr_v <= {lfsr_v[5:0], lfsr_v[6] ^ lfsr_v[5]}; // Polynomial: x^7 + x^6 + 1
+        end
+    end
+
+    // Assigning the scaled and offset random numbers to output registers
+    always @(posedge clk) begin
+        vertical_shift_reg <= random_num_v;
+        horizontal_shift_reg <= random_num_h;
     end
     
 endmodule
