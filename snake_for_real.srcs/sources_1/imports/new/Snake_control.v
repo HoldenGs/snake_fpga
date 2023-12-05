@@ -78,9 +78,10 @@ module Snake_control(
     parameter GREEN = 12'h0f0;
     parameter RED = 12'h00f;
     parameter YELLOW = 12'hff0;
+    parameter AQUA = 12'h5ff;
 
-    parameter SNAKE_COLOR = BLUE;
-    parameter BACKGROUND_COLOR = GREEN;
+    parameter SNAKE_COLOR = 12'h5f7;
+    parameter BACKGROUND_COLOR = AQUA;
 
     parameter IDLE = 2'd0;
     parameter PLAY = 2'd1;
