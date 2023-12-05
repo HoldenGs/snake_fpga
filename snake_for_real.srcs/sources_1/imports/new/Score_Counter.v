@@ -32,24 +32,6 @@ module Score_Counter(
     assign SCORE = {DecCount3, DecCount2[3:0]};
     
     wire Bit17TriggOut;
-//    wire [1:0] StrobeCount;
-    
-//    reg [4:0] current_score;
-//    reg [3:0] next_score;
-//    assign SCORE = current_score;
-    
-//    always@(posedge CLK) begin
-//        if (master_state == 2'd1) begin
-//            if (reached_target)
-//                current_score <= current_score + 5'd1;
-//        end
-//        else if (RESET)
-//            current_score <= 5'd0;
-//    end
-    
-//    always@(posedge CLK) begin
-//        current_score <= next_score;
-//    end
     
     Generic_counter # (
                         .COUNTER_WIDTH(17),
