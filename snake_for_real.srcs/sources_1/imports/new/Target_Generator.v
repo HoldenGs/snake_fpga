@@ -43,7 +43,7 @@ module Target_Generator(
     assign random_num_v = (lfsr_v % 91) + 15; // Scaling and offsetting
 
     // Linear Feedback Shift Register (LFSR) Logic
-    always @(posedge clk or posedge RESET) begin
+    always @(posedge CLK or posedge RESET) begin
         if (reached_target || RESET) begin
             lfsr_h <= 8'b00000001; // Non-zero initial value
             lfsr_v <= 7'b0000001;  // Non-zero initial value
@@ -54,7 +54,7 @@ module Target_Generator(
     end
 
     // Assigning the scaled and offset random numbers to output registers
-    always @(posedge clk) begin
+    always @(posedge CLK) begin
         vertical_shift_reg <= random_num_v;
         horizontal_shift_reg <= random_num_h;
     end
