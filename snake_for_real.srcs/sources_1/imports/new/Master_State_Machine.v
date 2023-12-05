@@ -43,7 +43,7 @@ module Master_State_Machine(
             state_game <= 2'd0;
         else if (state_game == 2'd1 && SCORE == 5'b10000)
             state_game <= 2'd2;
-        else if (state_game == 2'd1 && fail)
+        else if (state_game == 2'd1 && (fail || BTNC))
             state_game <= 2'd0;
         else
             state_game <= state_game;
