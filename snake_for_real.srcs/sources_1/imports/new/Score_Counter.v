@@ -64,9 +64,9 @@ module Score_Counter(
                         .COUNTER_MAX(9)
                       )
                       Bit4Counter2 (
-                        .CLK(reached_target),
+                        .CLK(CLK),
                         .RESET(RESET),
-                        .ENABLE_IN(CLK),
+                        .ENABLE_IN(reached_target),
                         .TRIG_OUT(trig3),
                         .COUNT(DecCount2)
                       );
