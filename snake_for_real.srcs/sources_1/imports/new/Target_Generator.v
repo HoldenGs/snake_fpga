@@ -49,7 +49,7 @@ module Target_Generator(
 //        end
 //        else begin
             if (reached_target || RESET) begin
-                if ({horizontal_shift_reg[6:0], eight_third_xnor} <= 140 && {vertical_shift_reg[5:0], seven_xnor} <= 100) begin
+                if ({horizontal_shift_reg[6:0], eight_third_xnor} <= 160 && {vertical_shift_reg[5:0], seven_xnor} <= 120) begin
                     horizontal_shift_reg <= {horizontal_shift_reg[6:0], eight_third_xnor};
                     vertical_shift_reg <= {vertical_shift_reg[5:0], seven_xnor};
                 end
