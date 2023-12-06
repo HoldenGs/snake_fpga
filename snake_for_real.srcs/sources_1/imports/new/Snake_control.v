@@ -180,7 +180,7 @@ module Snake_control(
                 if (score >= 4'd1) begin
                     color <= SNAKE_COLOR;
                     if (SnakeState_X[0] == SnakeState_X[3] && SnakeState_Y[0] == SnakeState_Y[3])
-                        crashed <= 1'b1; else crashed <= 1'b0;
+                        crashed <= 1'b1;
                 end else
                     color <= BACKGROUND_COLOR;
             end
@@ -188,7 +188,7 @@ module Snake_control(
                 if (score >= 4'd1) begin
                     color <= SNAKE_COLOR;
                     if (SnakeState_X[0] == SnakeState_X[4] && SnakeState_Y[0] == SnakeState_Y[4])
-                        crashed <= 1'b1; else crashed <= 1'b0;
+                        crashed <= 1'b1;
                 end else
                     color <= BACKGROUND_COLOR;
             end
@@ -196,7 +196,7 @@ module Snake_control(
                 if (score >= 4'd1) begin
                     color <= SNAKE_COLOR;
                     if (SnakeState_X[0] == SnakeState_X[5] && SnakeState_Y[0] == SnakeState_Y[5])
-                        crashed <= 1'b1; else crashed <= 1'b0;
+                        crashed <= 1'b1;
                 end else
                     color <= BACKGROUND_COLOR;
             end
@@ -204,7 +204,7 @@ module Snake_control(
                 if (score >= 4'd1) begin
                     color <= SNAKE_COLOR;
                     if (SnakeState_X[0] == SnakeState_X[6] && SnakeState_Y[0] == SnakeState_Y[6])
-                        crashed <= 1'b1; else crashed <= 1'b0;
+                        crashed <= 1'b1;
                 end else
                     color <= BACKGROUND_COLOR;
             end
@@ -212,7 +212,7 @@ module Snake_control(
                 if (score >= 4'd1) begin
                     color <= SNAKE_COLOR;
                     if (SnakeState_X[0] == SnakeState_X[7] && SnakeState_Y[0] == SnakeState_Y[7])
-                        crashed <= 1'b1; else crashed <= 1'b0;
+                        crashed <= 1'b1;
                 end else
                     color <= BACKGROUND_COLOR;
             end
@@ -220,7 +220,7 @@ module Snake_control(
                 if (score >= 4'd2) begin
                     color <= SNAKE_COLOR;
                     if (SnakeState_X[0] == SnakeState_X[8] && SnakeState_Y[0] == SnakeState_Y[8])
-                        crashed <= 1'b1; else crashed <= 1'b0;
+                        crashed <= 1'b1;
                 end else
                     color <= BACKGROUND_COLOR;
             end
@@ -228,7 +228,7 @@ module Snake_control(
                 if (score >= 4'd2) begin
                     color <= SNAKE_COLOR;
                     if (SnakeState_X[0] == SnakeState_X[9] && SnakeState_Y[0] == SnakeState_Y[9])
-                        crashed <= 1'b1; else crashed <= 1'b0;
+                        crashed <= 1'b1;
                 end else
                     color <= BACKGROUND_COLOR;
             end
@@ -236,7 +236,7 @@ module Snake_control(
                 if (score >= 4'd2) begin
                     color <= SNAKE_COLOR;
                     if (SnakeState_X[0] == SnakeState_X[10] && SnakeState_Y[0] == SnakeState_Y[10])
-                        crashed <= 1'b1; else crashed <= 1'b0;
+                        crashed <= 1'b1;
                 end else
                     color <= BACKGROUND_COLOR;
             end
@@ -244,7 +244,7 @@ module Snake_control(
                 if (score >= 4'd2) begin
                     color <= SNAKE_COLOR;
                     if (SnakeState_X[0] == SnakeState_X[11] && SnakeState_Y[0] == SnakeState_Y[11])
-                        crashed <= 1'b1; else crashed <= 1'b0;
+                        crashed <= 1'b1;
                 end else
                     color <= BACKGROUND_COLOR;
             end
@@ -252,7 +252,7 @@ module Snake_control(
                 if (score >= 4'd3) begin
                     color <= SNAKE_COLOR;
                     if (SnakeState_X[0] == SnakeState_X[12] && SnakeState_Y[0] == SnakeState_Y[12])
-                        crashed <= 1'b1; else crashed <= 1'b0;
+                        crashed <= 1'b1;
                 end else
                     color <= BACKGROUND_COLOR;
             end
@@ -260,7 +260,7 @@ module Snake_control(
                 if (score >= 4'd3) begin
                     color <= SNAKE_COLOR;
                     if (SnakeState_X[0] == SnakeState_X[13] && SnakeState_Y[0] == SnakeState_Y[13])
-                        crashed <= 1'b1; else crashed <= 1'b0;
+                        crashed <= 1'b1;
                 end else
                     color <= BACKGROUND_COLOR;
             end
@@ -268,7 +268,7 @@ module Snake_control(
                 if (score >= 4'd3) begin
                     color <= SNAKE_COLOR;
                     if (SnakeState_X[0] == SnakeState_X[14] && SnakeState_Y[0] == SnakeState_Y[14])
-                        crashed <= 1'b1; else crashed <= 1'b0;
+                        crashed <= 1'b1;
                 end else
                     color <= BACKGROUND_COLOR;
             end
@@ -276,7 +276,7 @@ module Snake_control(
                 if (score >= 4'd3) begin
                     color <= SNAKE_COLOR;
                     if (SnakeState_X[0] == SnakeState_X[15] && SnakeState_Y[0] == SnakeState_Y[15])
-                        crashed <= 1'b1; else crashed <= 1'b0;
+                        crashed <= 1'b1;
                 end else
                     color <= BACKGROUND_COLOR;
             end
@@ -284,7 +284,7 @@ module Snake_control(
                 if (score >= 4'd4) begin
                     color <= SNAKE_COLOR;
                     if (SnakeState_X[0] == SnakeState_X[16] && SnakeState_Y[0] == SnakeState_Y[16])
-                        crashed <= 1'b1; else crashed <= 1'b0;
+                        crashed <= 1'b1;
                 end else
                     color <= BACKGROUND_COLOR;
             end
@@ -292,7 +292,7 @@ module Snake_control(
                 if (score >= 4'd4) begin
                     color <= SNAKE_COLOR;
                     if (SnakeState_X[0] == SnakeState_X[17] && SnakeState_Y[0] == SnakeState_Y[17])
-                        crashed <= 1'b1; else crashed <= 1'b0;
+                        crashed <= 1'b1;
                 end else
                     color <= BACKGROUND_COLOR;
             end
@@ -300,7 +300,7 @@ module Snake_control(
                 if (score >= 4'd4) begin
                     color <= SNAKE_COLOR;
                     if (SnakeState_X[0] == SnakeState_X[18] && SnakeState_Y[0] == SnakeState_Y[18])
-                        crashed <= 1'b1; else crashed <= 1'b0;
+                        crashed <= 1'b1;
                 end else
                     color <= BACKGROUND_COLOR;
             end
@@ -308,7 +308,7 @@ module Snake_control(
                 if (score >= 4'd4) begin
                     color <= SNAKE_COLOR;
                     if (SnakeState_X[0] == SnakeState_X[19] && SnakeState_Y[0] == SnakeState_Y[19])
-                        crashed <= 1'b1; else crashed <= 1'b0;
+                        crashed <= 1'b1;
                 end else
                     color <= BACKGROUND_COLOR;
             end
@@ -316,7 +316,7 @@ module Snake_control(
                 if (score >= 4'd5) begin
                     color <= SNAKE_COLOR;
                     if (SnakeState_X[0] == SnakeState_X[20] && SnakeState_Y[0] == SnakeState_Y[20])
-                        crashed <= 1'b1; else crashed <= 1'b0;
+                        crashed <= 1'b1;
                 end else
                     color <= BACKGROUND_COLOR;
             end
@@ -324,7 +324,7 @@ module Snake_control(
                 if (score >= 4'd5) begin
                     color <= SNAKE_COLOR;
                     if (SnakeState_X[0] == SnakeState_X[21] && SnakeState_Y[0] == SnakeState_Y[21])
-                        crashed <= 1'b1; else crashed <= 1'b0;
+                        crashed <= 1'b1;
                 end else
                     color <= BACKGROUND_COLOR;
             end
@@ -332,7 +332,7 @@ module Snake_control(
                 if (score >= 4'd5) begin
                     color <= SNAKE_COLOR;
                     if (SnakeState_X[0] == SnakeState_X[22] && SnakeState_Y[0] == SnakeState_Y[22])
-                        crashed <= 1'b1; else crashed <= 1'b0;
+                        crashed <= 1'b1;
                 end else
                     color <= BACKGROUND_COLOR;
             end
@@ -340,7 +340,7 @@ module Snake_control(
                 if (score >= 4'd5) begin
                     color <= SNAKE_COLOR;
                     if (SnakeState_X[0] == SnakeState_X[23] && SnakeState_Y[0] == SnakeState_Y[23])
-                        crashed <= 1'b1; else crashed <= 1'b0;
+                        crashed <= 1'b1;
                 end else
                     color <= BACKGROUND_COLOR;
             end
@@ -348,7 +348,7 @@ module Snake_control(
                 if (score >= 4'd6) begin
                     color <= SNAKE_COLOR;
                     if (SnakeState_X[0] == SnakeState_X[24] && SnakeState_Y[0] == SnakeState_Y[24])
-                        crashed <= 1'b1; else crashed <= 1'b0;
+                        crashed <= 1'b1;
                 end else
                     color <= BACKGROUND_COLOR;
             end
@@ -356,7 +356,7 @@ module Snake_control(
                 if (score >= 4'd6) begin
                     color <= SNAKE_COLOR;
                     if (SnakeState_X[0] == SnakeState_X[25] && SnakeState_Y[0] == SnakeState_Y[25])
-                        crashed <= 1'b1; else crashed <= 1'b0;
+                        crashed <= 1'b1;
                 end else
                     color <= BACKGROUND_COLOR;
             end
@@ -364,7 +364,7 @@ module Snake_control(
                 if (score >= 4'd6) begin
                     color <= SNAKE_COLOR;
                     if (SnakeState_X[0] == SnakeState_X[26] && SnakeState_Y[0] == SnakeState_Y[26])
-                        crashed <= 1'b1; else crashed <= 1'b0;
+                        crashed <= 1'b1;
                 end else
                     color <= BACKGROUND_COLOR;
             end
@@ -372,7 +372,7 @@ module Snake_control(
                 if (score >= 4'd6) begin
                     color <= SNAKE_COLOR;
                     if (SnakeState_X[0] == SnakeState_X[27] && SnakeState_Y[0] == SnakeState_Y[27])
-                        crashed <= 1'b1; else crashed <= 1'b0;
+                        crashed <= 1'b1;
                 end else
                     color <= BACKGROUND_COLOR;
             end
@@ -380,7 +380,7 @@ module Snake_control(
                 if (score >= 4'd7) begin
                     color <= SNAKE_COLOR;
                     if (SnakeState_X[0] == SnakeState_X[28] && SnakeState_Y[0] == SnakeState_Y[28])
-                        crashed <= 1'b1; else crashed <= 1'b0;
+                        crashed <= 1'b1;
                 end else
                     color <= BACKGROUND_COLOR;
             end
@@ -388,7 +388,7 @@ module Snake_control(
                 if (score >= 4'd7) begin
                     color <= SNAKE_COLOR;
                     if (SnakeState_X[0] == SnakeState_X[29] && SnakeState_Y[0] == SnakeState_Y[29])
-                        crashed <= 1'b1; else crashed <= 1'b0;
+                        crashed <= 1'b1;
                 end else
                     color <= BACKGROUND_COLOR;
             end
@@ -396,7 +396,7 @@ module Snake_control(
                 if (score >= 4'd7) begin
                     color <= SNAKE_COLOR;
                     if (SnakeState_X[0] == SnakeState_X[30] && SnakeState_Y[0] == SnakeState_Y[30])
-                        crashed <= 1'b1; else crashed <= 1'b0;
+                        crashed <= 1'b1;
                 end else
                     color <= BACKGROUND_COLOR;
             end
@@ -404,7 +404,7 @@ module Snake_control(
                 if (score >= 4'd7) begin
                     color <= SNAKE_COLOR;
                     if (SnakeState_X[0] == SnakeState_X[31] && SnakeState_Y[0] == SnakeState_Y[31])
-                        crashed <= 1'b1; else crashed <= 1'b0;
+                        crashed <= 1'b1;
                 end else
                     color <= BACKGROUND_COLOR;
             end
@@ -412,7 +412,7 @@ module Snake_control(
                 if (score >= 4'd8) begin
                     color <= SNAKE_COLOR;
                     if (SnakeState_X[0] == SnakeState_X[32] && SnakeState_Y[0] == SnakeState_Y[32])
-                        crashed <= 1'b1; else crashed <= 1'b0;
+                        crashed <= 1'b1;
                 end else
                     color <= BACKGROUND_COLOR;
             end
@@ -420,7 +420,7 @@ module Snake_control(
                 if (score >= 4'd8) begin
                     color <= SNAKE_COLOR;
                     if (SnakeState_X[0] == SnakeState_X[33] && SnakeState_Y[0] == SnakeState_Y[33])
-                        crashed <= 1'b1; else crashed <= 1'b0;
+                        crashed <= 1'b1;
                 end else
                     color <= BACKGROUND_COLOR;
             end
@@ -428,7 +428,7 @@ module Snake_control(
                 if (score >= 4'd8) begin
                     color <= SNAKE_COLOR;
                     if (SnakeState_X[0] == SnakeState_X[34] && SnakeState_Y[0] == SnakeState_Y[34])
-                        crashed <= 1'b1; else crashed <= 1'b0;
+                        crashed <= 1'b1;
                 end else
                     color <= BACKGROUND_COLOR;
             end
@@ -436,7 +436,7 @@ module Snake_control(
                 if (score >= 4'd8) begin
                     color <= SNAKE_COLOR;
                     if (SnakeState_X[0] == SnakeState_X[35] && SnakeState_Y[0] == SnakeState_Y[35])
-                        crashed <= 1'b1; else crashed <= 1'b0;
+                        crashed <= 1'b1;
                 end else
                     color <= BACKGROUND_COLOR;
             end
@@ -444,7 +444,7 @@ module Snake_control(
                 if (score >= 4'd9) begin
                     color <= SNAKE_COLOR;
                     if (SnakeState_X[0] == SnakeState_X[36] && SnakeState_Y[0] == SnakeState_Y[36])
-                        crashed <= 1'b1; else crashed <= 1'b0;
+                        crashed <= 1'b1;
                 end else
                     color <= BACKGROUND_COLOR;
             end
@@ -452,7 +452,7 @@ module Snake_control(
                 if (score >= 4'd9) begin
                     color <= SNAKE_COLOR;
                     if (SnakeState_X[0] == SnakeState_X[37] && SnakeState_Y[0] == SnakeState_Y[37])
-                        crashed <= 1'b1; else crashed <= 1'b0;
+                        crashed <= 1'b1;
                 end else
                     color <= BACKGROUND_COLOR;
             end
@@ -460,7 +460,7 @@ module Snake_control(
                 if (score >= 4'd9) begin
                     color <= SNAKE_COLOR;
                     if (SnakeState_X[0] == SnakeState_X[38] && SnakeState_Y[0] == SnakeState_Y[38])
-                        crashed <= 1'b1; else crashed <= 1'b0;
+                        crashed <= 1'b1;
                 end else
                     color <= BACKGROUND_COLOR;
             end
@@ -468,18 +468,18 @@ module Snake_control(
                 if (score >= 4'd9) begin
                     color <= SNAKE_COLOR;
                     if (SnakeState_X[0] == SnakeState_X[39] && SnakeState_Y[0] == SnakeState_Y[39])
-                        crashed <= 1'b1; else crashed <= 1'b0;
+                        crashed <= 1'b1;
                 end else
                     color <= BACKGROUND_COLOR;
             end
             else //Background
                 color <= BACKGROUND_COLOR;
         end
-        else if (state_master == IDLE) //IDLE
+        else if (state_master == IDLE) begin //IDLE
             // Write out PRESS ANY BUTTON
             crashed <= 1'b0;
             color <= WHITE;
-        else if (state_master == WIN) //WIN
+        end else if (state_master == WIN) //WIN
             // Write out WIN
             
             color <= YELLOW;
