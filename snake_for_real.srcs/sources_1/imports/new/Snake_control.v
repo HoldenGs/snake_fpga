@@ -150,7 +150,7 @@ module Snake_control(
                 endcase
             end
 
-            else if (SnakeState_X[0] == target_horizontal_addr[7:0] && SnakeState_Y[0] == target_vertical_addr[6:0])
+            if (SnakeState_X[0] == target_horizontal_addr[7:0] && SnakeState_Y[0] == target_vertical_addr[6:0])
                 reached <= 1'b1;
             else
                 reached <= 1'b0;
@@ -477,7 +477,7 @@ module Snake_control(
         end
         else if (state_master == IDLE) //IDLE
             // Write out PRESS ANY BUTTON
-
+            crashed <= 1'b0;
             color <= WHITE;
         else if (state_master == WIN) //WIN
             // Write out WIN
