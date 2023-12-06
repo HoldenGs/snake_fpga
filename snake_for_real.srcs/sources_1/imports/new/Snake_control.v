@@ -80,7 +80,7 @@ module Snake_control(
     parameter YELLOW = 12'h0ff;
     parameter AQUA = 12'hff5;
 
-    parameter SNAKE_COLOR = 12'362;
+    parameter SNAKE_COLOR = 12'h362;
     parameter BACKGROUND_COLOR = AQUA;
 
     parameter IDLE = 2'd0;
@@ -111,7 +111,7 @@ module Snake_control(
             case(state_navigation)
                 2'd0: begin
                     if (SnakeState_X[0] == MaxX) begin
-                        crashed <= 1'b1;
+                        //crashed <= 1'b1;
                         SnakeState_X[0] <= 0;
                     end else
                         SnakeState_X[0] <= SnakeState_X[0] + 1;
@@ -119,16 +119,15 @@ module Snake_control(
                 
                 2'd1: begin
                     if (SnakeState_Y[0] == MaxY) begin
-                        crashed <= 1'b1;
+                        //crashed <= 1'b1;
                         SnakeState_Y[0] <= 0;
                     end else
-                    else
                         SnakeState_Y[0] <= SnakeState_Y[0] + 1;
                 end
                 
                 2'd2: begin
                     if (SnakeState_Y[0] == 0) begin
-                        crashed <= 1'b1;
+                        //crashed <= 1'b1;
                         SnakeState_Y[0] <= MaxY;
                     end else
                         SnakeState_Y[0] <= SnakeState_Y[0] - 1;
@@ -136,7 +135,7 @@ module Snake_control(
                 
                 2'd3: begin
                     if (SnakeState_X[0] == 0) begin
-                        crashed <= 1'b1;
+                        //crashed <= 1'b1;
                         SnakeState_X[0] <= MaxX;
                     end else
                         SnakeState_X[0] <= SnakeState_X[0] - 1;
@@ -154,7 +153,7 @@ module Snake_control(
         else
             reached <= 1'b0;
 
-        else if (state_master == PLAY) begin
+        if (state_master == PLAY && counter != 5000000) begin
             if (target_horizontal_addr[7:0] == horizontal_addr[9:2] && target_vertical_addr[6:0] == vertical_addr[8:2]) //Seed address
                 color <= RED;
 			else if (SnakeState_X[0] == horizontal_addr[9:2] && SnakeState_Y[0] == vertical_addr[8:2]) begin
