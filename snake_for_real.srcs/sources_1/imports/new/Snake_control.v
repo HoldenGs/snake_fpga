@@ -87,7 +87,7 @@ module Snake_control(
     parameter PLAY = 2'd1;
     parameter WIN = 2'd2;
 
-    parameter START_X = 8'd80;
+    parameter START_X = 8'd1;
     parameter START_Y = 7'd60;
     
     //Create snake pixels
@@ -163,8 +163,30 @@ module Snake_control(
                 reached <= 1'b0;
             
 
-            if (target_horizontal_addr[7:0] == horizontal_addr[9:2] && target_vertical_addr[6:0] == vertical_addr[8:2]) //Seed address
+            // if (target_horizontal_addr[7:0] == horizontal_addr[9:2] && target_vertical_addr[6:0] == vertical_addr[8:2]) //Seed address
+            //     color <= RED;
+
+            if (horizontal_addr[9:2] == 4'd20 && vertical_addr[8:2] == 4'd20 && score == 4'd0)
                 color <= RED;
+            else if (horizontal_addr[9:2] == 4'd100 && vertical_addr[8:2] == 4'd100 && score == 4'd1)
+                color <= RED;
+            else if (horizontal_addr[9:2] == 4'd80 && vertical_addr[8:2] == 4'd28 && score == 4'd2)
+                color <= RED;
+            else if (horizontal_addr[9:2] == 4'd40 && vertical_addr[8:2] == 4'd60 && score == 4'd3)
+                color <= RED;
+            else if (horizontal_addr[9:2] == 4'd28 && vertical_addr[8:2] == 4'd90 && score == 4'd4)
+                color <= RED;
+            else if (horizontal_addr[9:2] == 4'd60 && vertical_addr[8:2] == 4'd100 && score == 4'd5)
+                color <= RED;
+            else if (horizontal_addr[9:2] == 4'd100 && vertical_addr[8:2] == 4'd80 && score == 4'd6)
+                color <= RED;
+            else if (horizontal_addr[9:2] == 4'd120 && vertical_addr[8:2] == 4'd60 && score == 4'd7)
+                color <= RED;
+            else if (horizontal_addr[9:2] == 4'd100 && vertical_addr[8:2] == 4'd40 && score == 4'd8)
+                color <= RED;
+            else if (horizontal_addr[9:2] == 4'd80 && vertical_addr[8:2] == 4'd20 && score == 4'd9)
+                color <= RED;
+            
 			else if (SnakeState_X[0] == horizontal_addr[9:2] && SnakeState_Y[0] == vertical_addr[8:2]) begin
                 if (score >= 4'd0) begin
                     color <= SNAKE_COLOR;
