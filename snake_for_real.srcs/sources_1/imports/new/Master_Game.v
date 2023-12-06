@@ -49,9 +49,6 @@ module Master_Game(
     wire BTNR_D;
     wire BTNC_D;
 
-    always @(*) begin
-        $monitor("BTNU = %b, BTND = %b, BTNL = %b, BTNR = %b, BTNC = %b, score = %b, state_master = %b, state_navigation = %b, target_address = %b, address = %b, color = %b, strobe = %b, fail = %b, reached_target = %b, BTNU_D = %b, BTND_D = %b, BTNL_D = %b, BTNR_D = %b, BTNC_D = %b", BTNU, BTND, BTNL, BTNR, BTNC, score, state_master, state_navigation, target_address, address, color, strobe, fail, reached_target, BTNU_D, BTND_D, BTNL_D, BTNR_D, BTNC_D);
-    end
 
     debounce du(
                         .CLK(CLK),

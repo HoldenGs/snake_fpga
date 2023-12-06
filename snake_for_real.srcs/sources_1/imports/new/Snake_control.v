@@ -110,45 +110,51 @@ module Snake_control(
         if (counter == 5000000) begin
             case(state_navigation)
                 2'd0: begin
-                    if (SnakeState_X[0] == MaxX)
+                    if (SnakeState_X[0] == MaxX) begin
+                        crashed <= 1'b1;
                         SnakeState_X[0] <= 0;
-                    else
+                    end else
                         SnakeState_X[0] <= SnakeState_X[0] + 1;
                 end
                 
                 2'd1: begin
-                    if (SnakeState_Y[0] == MaxY)
+                    if (SnakeState_Y[0] == MaxY) begin
+                        crashed <= 1'b1;
                         SnakeState_Y[0] <= 0;
+                    end else
                     else
                         SnakeState_Y[0] <= SnakeState_Y[0] + 1;
                 end
                 
                 2'd2: begin
-                    if (SnakeState_Y[0] == 0)
+                    if (SnakeState_Y[0] == 0) begin
+                        crashed <= 1'b1;
                         SnakeState_Y[0] <= MaxY;
-                    else
+                    end else
                         SnakeState_Y[0] <= SnakeState_Y[0] - 1;
                 end
                 
                 2'd3: begin
-                    if (SnakeState_X[0] == 0)
+                    if (SnakeState_X[0] == 0) begin
+                        crashed <= 1'b1;
                         SnakeState_X[0] <= MaxX;
-                    else
+                    end else
                         SnakeState_X[0] <= SnakeState_X[0] - 1;
                 end
             endcase
         end
-    end    
-    
-    always@(posedge CLK) begin
-        if (SnakeState_X[0] == target_horizontal_addr[7:0] && SnakeState_Y[0] == target_vertical_addr[6:0])
+
+        else if (RESET) begin
+            SnakeState_X[0] <= 80;
+            SnakeState_Y[0] <= 100;
+        end
+
+        else if (SnakeState_X[0] == target_horizontal_addr[7:0] && SnakeState_Y[0] == target_vertical_addr[6:0])
             reached <= 1'b1;
         else
             reached <= 1'b0;
-    end
-    
-    always@(posedge CLK) begin
-        if (state_master == PLAY) begin
+
+        else if (state_master == PLAY) begin
             if (target_horizontal_addr[7:0] == horizontal_addr[9:2] && target_vertical_addr[6:0] == vertical_addr[8:2]) //Seed address
                 color <= RED;
 			else if (SnakeState_X[0] == horizontal_addr[9:2] && SnakeState_Y[0] == vertical_addr[8:2]) begin
