@@ -97,6 +97,8 @@ module Snake_control(
         begin: PixShift
             always@(posedge CLK) begin
                 if (counter == 5000000) begin
+                    if (SnakeState_X[0] == SnakeState_X[PixNo] && SnakeState_Y[0] == SnakeState_Y[PixNo])
+                        crashed <= 1'b1;
                     SnakeState_X[PixNo + 1] <= SnakeState_X[PixNo];
                     SnakeState_Y[PixNo + 1] <= SnakeState_Y[PixNo];
                 end
@@ -157,10 +159,10 @@ module Snake_control(
                 endcase
             end
 
-            if (SnakeState_X[0] == target_horizontal_addr[7:0] && SnakeState_Y[0] == target_vertical_addr[6:0])
-                reached <= 1'b1;
-            else
-                reached <= 1'b0;
+            // if (SnakeState_X[0] == target_horizontal_addr[7:0] && SnakeState_Y[0] == target_vertical_addr[6:0])
+            //     reached <= 1'b1;
+            // else
+            //     reached <= 1'b0;
             
 
             // if (target_horizontal_addr[7:0] == horizontal_addr[9:2] && target_vertical_addr[6:0] == vertical_addr[8:2]) //Seed address
@@ -168,45 +170,74 @@ module Snake_control(
 
             if (horizontal_addr[9:2] == 20 && vertical_addr[8:2] == 20 && score == 4'd0) begin
                 color <= RED;
-                reached <= 1'b1;
+                if (SnakeState_X[0] == 20 && SnakeState_Y[0] == 20)
+                    reached <= 1'b1;
+                else
+                    reached <= 1'b0;
             end
             else if (horizontal_addr[9:2] == 100 && vertical_addr[8:2] == 100 && score == 4'd1) begin
                 color <= RED;
-                reached <= 1'b1;
+                if (SnakeState_X[0] == 100 && SnakeState_Y[0] == 100)
+                    reached <= 1'b1;
+                else
+                    reached <= 1'b0;
             end
             else if (horizontal_addr[9:2] == 80 && vertical_addr[8:2] == 28 && score == 4'd2) begin
                 color <= RED;
-                reached <= 1'b1;
+                if (SnakeState_X[0] == 80 && SnakeState_Y[0] == 28)
+                    reached <= 1'b1;
+                else
+                    reached <= 1'b0;
             end
             else if (horizontal_addr[9:2] == 40 && vertical_addr[8:2] == 60 && score == 4'd3) begin
                 color <= RED;
-                reached <= 1'b1;
+                if (SnakeState_X[0] == 40 && SnakeState_Y[0] == 60)
+                    reached <= 1'b1;
+                else
+                    reached <= 1'b0;
             end
             else if (horizontal_addr[9:2] == 28 && vertical_addr[8:2] == 90 && score == 4'd4) begin
                 color <= RED;
-                reached <= 1'b1;
+                if (SnakeState_X[0] == 28 && SnakeState_Y[0] == 90)
+                    reached <= 1'b1;
+                else
+                    reached <= 1'b0;
             end
             else if (horizontal_addr[9:2] == 60 && vertical_addr[8:2] == 100 && score == 4'd5) begin
                 color <= RED;
-                reached <= 1'b1;
+                if (SnakeState_X[0] == 60 && SnakeState_Y[0] == 100)
+                    reached <= 1'b1;
+                else
+                    reached <= 1'b0;
             end
             else if (horizontal_addr[9:2] == 100 && vertical_addr[8:2] == 80 && score == 4'd6) begin
                 color <= RED;
-                reached <= 1'b1;
+                if (SnakeState_X[0] == 100 && SnakeState_Y[0] == 80)
+                    reached <= 1'b1;
+                else
+                    reached <= 1'b0;
             end
             else if (horizontal_addr[9:2] == 120 && vertical_addr[8:2] == 60 && score == 4'd7) begin
                 color <= RED;
-                reached <= 1'b1;
+                if (SnakeState_X[0] == 120 && SnakeState_Y[0] == 60)
+                    reached <= 1'b1;
+                else
+                    reached <= 1'b0;
             end
             else if (horizontal_addr[9:2] == 100 && vertical_addr[8:2] == 40 && score == 4'd8) begin
                 color <= RED;
-                reached <= 1'b1;
+                if (SnakeState_X[0] == 100 && SnakeState_Y[0] == 40)
+                    reached <= 1'b1;
+                else
+                    reached <= 1'b0;
             end
             else if (horizontal_addr[9:2] == 80 && vertical_addr[8:2] == 20 && score == 4'd9) begin
                 color <= RED;
-                reached <= 1'b1;
+                if (SnakeState_X[0] == 80 && SnakeState_Y[0] == 20)
+                    reached <= 1'b1;
+                else
+                    reached <= 1'b0;
             end
-            else reached <= 1'b0;
             
 			else if (SnakeState_X[0] == horizontal_addr[9:2] && SnakeState_Y[0] == vertical_addr[8:2]) begin
                 if (score >= 4'd0) begin
