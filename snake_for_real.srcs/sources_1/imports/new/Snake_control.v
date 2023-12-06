@@ -97,7 +97,7 @@ module Snake_control(
                     SnakeState_X[PixNo + 1] <= SnakeState_X[PixNo];
                     SnakeState_Y[PixNo + 1] <= SnakeState_Y[PixNo];
                 end
-                else if(RESET) begin
+                else if (RESET) begin
                     SnakeState_X[PixNo + 1] <= 80;
                     SnakeState_Y[PixNo + 1] <= 100;
                 end
@@ -107,54 +107,56 @@ module Snake_control(
     
     //Determine next position of snake
     always@(posedge CLK) begin
-        if (counter == 5000000) begin
-            case(state_navigation)
-                2'd0: begin
-                    if (SnakeState_X[0] == MaxX) begin
-                        //crashed <= 1'b1;
-                        SnakeState_X[0] <= 0;
-                    end else
-                        SnakeState_X[0] <= SnakeState_X[0] + 1;
-                end
-                
-                2'd1: begin
-                    if (SnakeState_Y[0] == MaxY) begin
-                        //crashed <= 1'b1;
-                        SnakeState_Y[0] <= 0;
-                    end else
-                        SnakeState_Y[0] <= SnakeState_Y[0] + 1;
-                end
-                
-                2'd2: begin
-                    if (SnakeState_Y[0] == 0) begin
-                        //crashed <= 1'b1;
-                        SnakeState_Y[0] <= MaxY;
-                    end else
-                        SnakeState_Y[0] <= SnakeState_Y[0] - 1;
-                end
-                
-                2'd3: begin
-                    if (SnakeState_X[0] == 0) begin
-                        //crashed <= 1'b1;
-                        SnakeState_X[0] <= MaxX;
-                    end else
-                        SnakeState_X[0] <= SnakeState_X[0] - 1;
-                end
-            endcase
-        end
 
-        else if (RESET) begin
+        if (RESET) begin
             SnakeState_X[0] <= 80;
             SnakeState_Y[0] <= 100;
         end
 
-        else if (SnakeState_X[0] == target_horizontal_addr[7:0] && SnakeState_Y[0] == target_vertical_addr[6:0])
-            reached <= 1'b1;
-        else
-            reached <= 1'b0;
+        else if (state_master == PLAY) begin
+            if (counter == 5000000) begin
+                case(state_navigation)
+                    2'd0: begin
+                        if (SnakeState_X[0] == MaxX) begin
+                            crashed <= 1'b1;
+                            SnakeState_X[0] <= 0;
+                        end else
+                            SnakeState_X[0] <= SnakeState_X[0] + 1;
+                    end
+                    
+                    2'd1: begin
+                        if (SnakeState_Y[0] == MaxY) begin
+                            crashed <= 1'b1;
+                            SnakeState_Y[0] <= 0;
+                        end else
+                            SnakeState_Y[0] <= SnakeState_Y[0] + 1;
+                    end
+                    
+                    2'd2: begin
+                        if (SnakeState_Y[0] == 0) begin
+                            crashed <= 1'b1;
+                            SnakeState_Y[0] <= MaxY;
+                        end else
+                            SnakeState_Y[0] <= SnakeState_Y[0] - 1;
+                    end
+                    
+                    2'd3: begin
+                        if (SnakeState_X[0] == 0) begin
+                            crashed <= 1'b1;
+                            SnakeState_X[0] <= MaxX;
+                        end else
+                            SnakeState_X[0] <= SnakeState_X[0] - 1;
+                    end
+                endcase
+            end
 
-        if (state_master == PLAY && counter != 5000000) begin
-            if (target_horizontal_addr[7:0] == horizontal_addr[9:2] && target_vertical_addr[6:0] == vertical_addr[8:2]) //Seed address
+            else if (SnakeState_X[0] == target_horizontal_addr[7:0] && SnakeState_Y[0] == target_vertical_addr[6:0])
+                reached <= 1'b1;
+            else
+                reached <= 1'b0;
+            
+
+            else if (target_horizontal_addr[7:0] == horizontal_addr[9:2] && target_vertical_addr[6:0] == vertical_addr[8:2]) //Seed address
                 color <= RED;
 			else if (SnakeState_X[0] == horizontal_addr[9:2] && SnakeState_Y[0] == vertical_addr[8:2]) begin
                 if (score >= 4'd0) begin
