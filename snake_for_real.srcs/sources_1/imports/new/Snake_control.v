@@ -97,9 +97,9 @@ module Snake_control(
         begin: PixShift
             always@(posedge CLK) begin
                 if (counter == 5000000) begin
-                    if (SnakeState_X[0] != START_X && SnakeState_Y[0] != START_Y &&
-                        SnakeState_X[0] == SnakeState_X[PixNo] && SnakeState_Y[0] == SnakeState_Y[PixNo])
-                        crashed <= 1'b1;
+                    // if (SnakeState_X[0] != START_X && SnakeState_Y[0] != START_Y &&
+                    //     SnakeState_X[0] == SnakeState_X[PixNo] && SnakeState_Y[0] == SnakeState_Y[PixNo])
+                    //     crashed <= 1'b1;
                     SnakeState_X[PixNo + 1] <= SnakeState_X[PixNo];
                     SnakeState_Y[PixNo + 1] <= SnakeState_Y[PixNo];
                 end
