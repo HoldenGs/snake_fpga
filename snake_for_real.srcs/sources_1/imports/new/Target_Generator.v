@@ -24,6 +24,7 @@ module Target_Generator(
         input CLK,
         input RESET,
         input reached_target,
+        input crashed,
         output [14:0] rand_target_address
     );
     
@@ -48,7 +49,7 @@ module Target_Generator(
 //            vertical_shift_reg <= 7'b0101100;
 //        end
 //        else begin
-            if (reached_target || RESET) begin
+            if (reached_target || RESET || crashed) begin
                 if ({horizontal_shift_reg[6:0], eight_third_xnor} <= 160 && {vertical_shift_reg[5:0], seven_xnor} <= 120) begin
                     horizontal_shift_reg <= {horizontal_shift_reg[6:0], eight_third_xnor};
                     vertical_shift_reg <= {vertical_shift_reg[5:0], seven_xnor};

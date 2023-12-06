@@ -119,6 +119,7 @@ module Master_Game(
                         .CLK(CLK),
                         .RESET(BTNC_D),
                         .reached_target(reached_target),
+                        .crashed(fail),
                         .rand_target_address(target_address)
                     );
     
