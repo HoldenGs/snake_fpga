@@ -86,6 +86,9 @@ module Snake_control(
     parameter IDLE = 2'd0;
     parameter PLAY = 2'd1;
     parameter WIN = 2'd2;
+
+    parameter START_X = 8'd80;
+    parameter START_Y = 7'd60;
     
     //Create snake pixels
     genvar PixNo;
@@ -98,8 +101,8 @@ module Snake_control(
                     SnakeState_Y[PixNo + 1] <= SnakeState_Y[PixNo];
                 end
                 else if (RESET) begin
-                    SnakeState_X[PixNo + 1] <= 80;
-                    SnakeState_Y[PixNo + 1] <= 100;
+                    SnakeState_X[PixNo + 1] <= START_X;
+                    SnakeState_Y[PixNo + 1] <= START_Y;
                 end
             end
         end
@@ -109,8 +112,8 @@ module Snake_control(
     always@(posedge CLK) begin
 
         if (RESET) begin
-            SnakeState_X[0] <= 80;
-            SnakeState_Y[0] <= 100;
+            SnakeState_X[0] <= START_X;
+            SnakeState_Y[0] <= START_Y;
         end
 
         else if (state_master == PLAY) begin
@@ -119,8 +122,8 @@ module Snake_control(
                     2'd0: begin
                         if (SnakeState_X[0] == MaxX) begin
                             crashed <= 1'b1;
-                            SnakeState_X[0] <= 80;
-                            SnakeState_Y[0] <= 100;
+                            SnakeState_X[0] <= START_X;
+                            SnakeState_Y[0] <= START_Y;
                         end else
                             SnakeState_X[0] <= SnakeState_X[0] + 1;
                     end
@@ -128,8 +131,8 @@ module Snake_control(
                     2'd1: begin
                         if (SnakeState_Y[0] == MaxY) begin
                             crashed <= 1'b1;
-                            SnakeState_X[0] <= 80;
-                            SnakeState_Y[0] <= 100;
+                            SnakeState_X[0] <= START_X;
+                            SnakeState_Y[0] <= START_Y;
                         end else
                             SnakeState_Y[0] <= SnakeState_Y[0] + 1;
                     end
@@ -137,8 +140,8 @@ module Snake_control(
                     2'd2: begin
                         if (SnakeState_Y[0] == 0) begin
                             crashed <= 1'b1;
-                            SnakeState_X[0] <= 80;
-                            SnakeState_Y[0] <= 100;
+                            SnakeState_X[0] <= START_X;
+                            SnakeState_Y[0] <= START_Y;
                         end else
                             SnakeState_Y[0] <= SnakeState_Y[0] - 1;
                     end
@@ -146,8 +149,8 @@ module Snake_control(
                     2'd3: begin
                         if (SnakeState_X[0] == 0) begin
                             crashed <= 1'b1;
-                            SnakeState_X[0] <= 80;
-                            SnakeState_Y[0] <= 100;
+                            SnakeState_X[0] <= START_X;
+                            SnakeState_Y[0] <= START_Y;
                         end else
                             SnakeState_X[0] <= SnakeState_X[0] - 1;
                     end
