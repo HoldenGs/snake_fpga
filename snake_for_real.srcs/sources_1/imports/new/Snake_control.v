@@ -119,7 +119,8 @@ module Snake_control(
                     2'd0: begin
                         if (SnakeState_X[0] == MaxX) begin
                             crashed <= 1'b1;
-                            SnakeState_X[0] <= 0;
+                            SnakeState_X[0] <= 80;
+                            SnakeState_Y[0] <= 100;
                         end else
                             SnakeState_X[0] <= SnakeState_X[0] + 1;
                     end
@@ -127,7 +128,8 @@ module Snake_control(
                     2'd1: begin
                         if (SnakeState_Y[0] == MaxY) begin
                             crashed <= 1'b1;
-                            SnakeState_Y[0] <= 0;
+                            SnakeState_X[0] <= 80;
+                            SnakeState_Y[0] <= 100;
                         end else
                             SnakeState_Y[0] <= SnakeState_Y[0] + 1;
                     end
@@ -135,7 +137,8 @@ module Snake_control(
                     2'd2: begin
                         if (SnakeState_Y[0] == 0) begin
                             crashed <= 1'b1;
-                            SnakeState_Y[0] <= MaxY;
+                            SnakeState_X[0] <= 80;
+                            SnakeState_Y[0] <= 100;
                         end else
                             SnakeState_Y[0] <= SnakeState_Y[0] - 1;
                     end
@@ -143,7 +146,8 @@ module Snake_control(
                     2'd3: begin
                         if (SnakeState_X[0] == 0) begin
                             crashed <= 1'b1;
-                            SnakeState_X[0] <= MaxX;
+                            SnakeState_X[0] <= 80;
+                            SnakeState_Y[0] <= 100;
                         end else
                             SnakeState_X[0] <= SnakeState_X[0] - 1;
                     end

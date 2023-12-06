@@ -107,8 +107,6 @@ module VGA_Driver(
     reg [9:0] VerAddr;
     
     //If both counters between TimeToBackPorchEnd and TimeToDisplayTimeEnd
-    //COLOUR_OUT = COLOUR_IN
-    //else COLOUR_OUT = 12'h000
     always@(posedge CLK) begin
         if ((VertTimeToBackPorchEnd <= CounterTo520Trigger) && (CounterTo520Trigger < VertTimeToDisplayTimeEnd) &&
             (HorzTimeToBackPorchEnd <= CounterTo799Trigger) && (CounterTo799Trigger < HorzTimeToDisplayTimeEnd)) begin
