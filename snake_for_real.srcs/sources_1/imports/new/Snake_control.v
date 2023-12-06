@@ -227,7 +227,7 @@ module Snake_control(
             else if (SnakeState_X[9] == horizontal_addr[9:2] && SnakeState_Y[9] == vertical_addr[8:2]) begin
                 if (score >= 4'd2) begin
                     color <= SNAKE_COLOR;
-                    if counter == 5000000 && SnakeState_X[0] == SnakeState_X[9] && SnakeState_Y[0] == SnakeState_Y[9])
+                    if (counter == 5000000 && SnakeState_X[0] == SnakeState_X[9] && SnakeState_Y[0] == SnakeState_Y[9])
                         crashed <= 1'b1;
                 end else
                     color <= BACKGROUND_COLOR;
